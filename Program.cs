@@ -9,17 +9,18 @@ namespace NickWebApi
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            CreateHostBuilder(args).Build().Run();
+            //var host = CreateHostBuilder(args).Build();
 
-            using (var serviceScope = host.Services.CreateScope())
-            {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
-                await dbContext.Database.MigrateAsync();
-            }
+            //using (var serviceScope = host.Services.CreateScope())
+            //{
+            //    var dbContext = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
+            //    await dbContext.Database.MigrateAsync();
+            //}
 
-            await host.RunAsync();
+            //await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
