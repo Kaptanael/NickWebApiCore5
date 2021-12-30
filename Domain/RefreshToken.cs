@@ -7,6 +7,7 @@ namespace NickWebApi.Domain
 {
     public class RefreshToken
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public string Token { get; set; }
 

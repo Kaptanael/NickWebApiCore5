@@ -96,7 +96,7 @@ namespace NickWebApi.Services
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim("id", user.Id)
                 }),
-                Expires = DateTime.UtcNow.Add(TimeSpan.Parse(_jwtSettings.TokenLifeTime)),
+                Expires = DateTime.UtcNow.Add(_jwtSettings.TokenLifeTime),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -107,8 +107,7 @@ namespace NickWebApi.Services
                 JwtId = token.Id,
                 UserId = user.Id,
                 CreatedDate = DateTime.UtcNow,
-                ExpiryDate = DateTime.UtcNow.AddMonths(6),
-                Token = tokenHandler.WriteToken(token)
+                ExpiryDate = DateTime.UtcNow.AddMonths(6)                
             };
 
             await _dataContext.RefreshTokens.AddAsync(refreshToken);
