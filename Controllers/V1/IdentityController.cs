@@ -7,9 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace NickWebApi.Controllers.V1
-{
-    [Route("api/[controller]")]
-    [ApiController]
+{    
     public class IdentityController : ControllerBase
     {
         private readonly IIdentityService _identityService;
